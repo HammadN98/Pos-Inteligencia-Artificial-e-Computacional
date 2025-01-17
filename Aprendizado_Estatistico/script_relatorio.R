@@ -123,3 +123,9 @@ ggplot(df_resultados, aes(x = reorder(modelo, MSE), y = MSE, fill = modelo)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   theme_minimal() +
   labs(title = "Comparação de MSE dos Modelos", x = "Modelo", y = "MSE")
+
+#FAzer uma matriz de correlacao com as variaveis escolhidas
+# Selecionar as colunas desejadas
+colunas_usadas = dados[, c("rm", "lstat", "dis", "crim", "indus", "nox", "medv")]
+correlacao = cor(colunas_usadas, use = "complete.obs")
+corrplot::corrplot(correlacao, method = "circle", tl.cex = 0.7)
